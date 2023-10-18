@@ -1,11 +1,13 @@
-
-
+import { Routes } from 'react-router-dom'
+import './app.css' 
 function App() {
  
 
   return (
     <>
-     lms
+     <Routes>
+
+     </Routes>
     </>
   )
 }
