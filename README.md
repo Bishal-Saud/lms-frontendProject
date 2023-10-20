@@ -48,6 +48,12 @@ npx tailwindcss init
 @tailwind components;
 @tailwind utilities;
 ```
+
+5. Added daisyui drawer plugin 
+```
+ plugins: [require("daisyui"),require("@tailwindcss/line-clamp")],
+
+```
 ### Adding plugins and dependencies 
 
  ```
