@@ -1,15 +1,13 @@
-import { Routes } from 'react-router-dom'
-import './app.css' 
+import { Routes } from "react-router-dom";
+import "./app.css";
+import Footer from "./Components/Footer";
 function App() {
- 
-
   return (
     <>
-     <Routes>
-
-     </Routes>
+      {/* <Routes></Routes> */}
+      <Footer/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

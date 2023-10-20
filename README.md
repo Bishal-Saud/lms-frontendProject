@@ -29,7 +29,7 @@ npm dev run
 1. Install TailwindCss
 
 ```
-npm install -D tailwindcss
+npm install -D tailwindcss postcss autoprefixer
 ```
 
 2. Create Tailwind Config file
@@ -38,7 +38,7 @@ npx tailwindcss init
 ```
 3.Add file extension to tailwind config file content properties 
 ```
- ["./src/**/*.{html,js,jsx,ts,tsx}"]
+ [  "./index.html","./src/**/*.{html,js,jsx,ts,tsx}"]
 ```
 
 4.Add the tailwind directives at the top of the `index.css`
@@ -73,3 +73,12 @@ plugins: ['...','simple-import-sort'],
 ```
 
 4.To enable auto import sort on file save in vsc
+
+- open `setting.json`
+- add the following config
+
+```
+ "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+```
