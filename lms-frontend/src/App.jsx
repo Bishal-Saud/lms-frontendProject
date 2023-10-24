@@ -3,12 +3,14 @@ import "./app.css";
 
 import HomePage from "./Pages/Homepage";
 import AboutUs from "./Pages/AboutUs";
+import NotFound from "./Pages/NotFound";
 function App() {
   return (
     <>
      <Routes>
       <Route path="/" element={<HomePage/>}></Route>
       <Route path="/about" element={<AboutUs/>}></Route>
+      <Route path="*" element={<NotFound/>}></Route>
      </Routes>
     </>
   );
