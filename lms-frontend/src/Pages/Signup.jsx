@@ -3,6 +3,8 @@ import HomeLayout from "../Layouts/HomeLayout";
 import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import toast from 'react-hot-toast'
+import { createAccount } from "../Redux/slices/authSlice";
 
 function Signup() {
   const [previewImage, setPreviewImage] = useState("");
@@ -44,10 +46,59 @@ if(uploadImage){
 }
   }
 
+  async function createNewAccount(event){
+    event.preventDefault();
+    if(!signupData.email || !signupData.password || !signupData.avatar || !signupData.fullName){
+    toast.error("Please Fill the all details")
+    return;
+    }
+
+    //Checking name field length 
+    if(signupData.fullName.length < 0){
+      toast.error("Name should be at least of 5 character ! ")
+      return;
+    }
+
+    //Checking valid email
+
+    if(!signupData.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+      toast.error("Invalid Email");
+      return
+    }
+
+    //Checking valid password 
+    if(!signupData.password.match( /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)){
+      toast.error('Password should be 6 to 16 character long with at least special character or number')
+    }
+
+    const formData = new FormData();
+    formData.append('fullName',signupData.fullName)
+    formData.append('password',signupData.password)
+    formData.append('email',signupData.email)
+    formData.append('avatar',signupData.avatar)
+
+    //dispatch create account action
+
+    const response = await dispatch(createAccount(formData))
+console.log(response);
+    if(response?.payload?.success)
+ navigate("/")
+ 
+
+    setSignupData({
+      fullName:"",
+      email:"",
+      password:"",
+      avatar:""
+    })
+
+    setPreviewImage("")
+  }
+
   return (
     <HomeLayout>
       <div className="flex items-center justify-center h-screen">
-        <form className="flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]">
+        <form noValidate onSubmit={createNewAccount} className="flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]">
           <h1 className="text-center text-2xl font-bold ">Registration Page</h1>
 
           <label htmlFor="image_upload" className="cursor-pointer">
@@ -63,7 +114,7 @@ if(uploadImage){
           <input
           onChange={getImage}
           type="file"
-            className="hidden"
+            className=""
             id="image_uploads"
             name="image_uploads"
             accept=".jpg, .jpeg ,.png, .svg"
