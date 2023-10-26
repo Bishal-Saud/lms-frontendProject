@@ -182,7 +182,7 @@ function Signup() {
           </button>
           <p className="text-center">
             Already have an account ?{" "}
-            <Link to="./login" className="link text-accent cursor-pointer">
+            <Link to="/signin" className="link text-accent cursor-pointer">
               Login
             </Link>
           </p>
