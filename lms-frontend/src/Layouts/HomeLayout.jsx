@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from "../components/footer";
 // import { logout } from '../redux/slices/authSlice';
 
-
 function HomeLayout({ children }) {
 
     const dispatch = useDispatch();
@@ -14,7 +13,6 @@ function HomeLayout({ children }) {
 
     const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
     const role = useSelector((state) => state?.auth?.role);
-
     function changeWidth() {
         const drawerSide = document.getElementsByClassName("drawer-side");
         drawerSide[0].style.width = 'auto';
