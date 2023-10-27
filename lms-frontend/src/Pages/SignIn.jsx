@@ -1,22 +1,17 @@
 import { useState } from "react";
 import HomeLayout from "../Layouts/HomeLayout";
-import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { login } from "../Redux/slices/authSlice";
 
 function SignIn() {
- 
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [signinData, setSignInData] = useState({
-  
     email: "",
     password: "",
-
   });
 
   function handleUserInput(e) {
@@ -27,33 +22,25 @@ function SignIn() {
     });
   }
 
-  
-
   async function islogin(event) {
     event.preventDefault();
-    if (
-      !signinData.email ||
-      !signinData.password 
-    ) {
+    if (!signinData.email || !signinData.password) {
       toast.error("Please Fill the all details");
       return;
-    }
 
- 
+    }
 
     //dispatch create account action
 
     const response = await dispatch(login(signinData));
-       if (response?.payload?.success) navigate("/");
+    console.log(response);
+    if (response?.payload?.success)
+     navigate("/");
 
     setSignInData({
-   
       email: "",
       password: "",
- 
     });
-
-   
   }
 
   return (
@@ -96,8 +83,7 @@ function SignIn() {
             type="submit"
             className=" bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 mt-2 font-semibold cursor-pointer"
           >
-           Login
-
+            Login
           </button>
           <p className="text-center">
             Don't have an account ?{" "}
