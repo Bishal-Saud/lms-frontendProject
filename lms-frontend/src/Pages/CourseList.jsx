@@ -18,8 +18,8 @@ loadCourse()
 return(
 <HomeLayout>
     <div className="min-h-[90vh] pt-12 pl-20 flex flex-col gap-20 text-white">
-<h1>Explore Courses made by 
-    <span className='font-bold text-yellow-500 '>Industry Expert</span>
+<h1 className="text-center text-2xl font-semibold">Explore Courses made by 
+    <span className='font-bold text-yellow-500 '> Industry Expert</span>
 </h1>
 <div className="mb-10 flex flex-wrap gap-14">
 {courseData?.map((element)=>{
