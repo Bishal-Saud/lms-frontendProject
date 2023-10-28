@@ -27,15 +27,13 @@ function SignIn() {
     if (!signinData.email || !signinData.password) {
       toast.error("Please Fill the all details");
       return;
-
     }
 
     //dispatch create account action
 
     const response = await dispatch(login(signinData));
     console.log(response);
-    if (response?.payload?.success)
-     navigate("/");
+    if (response?.payload?.success) navigate("/");
 
     setSignInData({
       email: "",

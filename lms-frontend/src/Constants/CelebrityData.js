@@ -1,8 +1,8 @@
+import apj from "../assets/images/apj.png";
 import billGates from "../assets/images/billGates.png";
 import einstein from "../assets/images/einstein.png";
 import nelsonMandela from "../assets/images/nelsonMandela.png";
 import steveJobs from "../assets/images/steveJobs.png";
-import apj from "../assets/images/apj.png";
 
 export  const celebrities = [
     {

@@ -3,8 +3,6 @@ import aboutMainImage from "../assets/images/aboutMainImage.png";
 import CarouselSlide from "../Components/CarouselSlide";
 import { celebrities } from "../Constants/CelebrityData";
 function AboutUs() {
-
-   
   return (
     <HomeLayout>
       <div className="pl-20 pt-20 flex flex-col text-white">
@@ -36,14 +34,14 @@ function AboutUs() {
         </div>
 
         <div className="carousel w-1/2 my-16 m-auto">
-            {celebrities && celebrities.map(celebrity => (
-                <CarouselSlide
-                {... celebrity}
+          {celebrities &&
+            celebrities.map((celebrity) => (
+              <CarouselSlide
+                {...celebrity}
                 key={celebrity.slideNumber}
                 totalSlides={celebrities.length}
-                />
+              />
             ))}
-          
         </div>
       </div>
     </HomeLayout>

@@ -1,4 +1,13 @@
+import PropTypes from 'prop-types'
+
 function CarouselSlide({image,title,description,slideNumber,totalSlides}){
+  CarouselSlide.propTypes = {
+    image: PropTypes.string.isRequired,         // Example: string type, required
+    title: PropTypes.string.isRequired,         // Example: string type, required
+    description: PropTypes.string.isRequired,   // Example: string type, required
+    slideNumber: PropTypes.number.isRequired,   // Example: number type, required
+    totalSlides: PropTypes.number.isRequired,   // Example: number type, required
+  };
 return(
     <>
      <div id={`slide${slideNumber}`} className="carousel-item relative w-full">
