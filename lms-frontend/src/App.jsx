@@ -11,6 +11,8 @@ import NotFound from "./Pages/NotFound";
 import SignIn from "./Pages/SignIn";
 import Signup from "./Pages/Signup";
 import CourseDescription from "./Pages/Course/CourseDescription";
+import RequireAuth from "./Components/Auth/RequireAuth";
+import CreateCourse from "./Pages/Course/CreateCourse";
 function App() {
   return (
     <>
@@ -26,6 +28,9 @@ function App() {
           path="/course/description"
           element={<CourseDescription />}
         ></Route>
+        <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
+          <Route path="/courses/create" element={<CreateCourse />}></Route>
+        </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>
