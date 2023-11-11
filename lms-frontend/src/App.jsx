@@ -13,6 +13,7 @@ import Signup from "./Pages/Signup";
 import CourseDescription from "./Pages/Course/CourseDescription";
 import RequireAuth from "./Components/Auth/RequireAuth";
 import CreateCourse from "./Pages/Course/CreateCourse";
+import Profile from "./Pages/User/Profile";
 function App() {
   return (
     <>
@@ -28,9 +29,18 @@ function App() {
           path="/course/description"
           element={<CourseDescription />}
         ></Route>
+
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
           <Route path="/courses/create" element={<CreateCourse />}></Route>
         </Route>
+
+        {/* Not working require auth so I'm trying to do it separately */}
+        <Route
+          element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}
+        ></Route>
+
+        <Route path="/user/profile" element={<Profile />}></Route>
+
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>

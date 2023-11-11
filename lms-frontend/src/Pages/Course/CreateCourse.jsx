@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createNewCourse } from "../../Redux/slices/CourseSlice";
+import HomeLayout from "../../Layouts/HomeLayout";
 
 function CreateCourse() {
   const dispatch = useDispatch();
