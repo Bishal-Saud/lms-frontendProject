@@ -14,6 +14,7 @@ import CourseDescription from "./Pages/Course/CourseDescription";
 import RequireAuth from "./Components/Auth/RequireAuth";
 import CreateCourse from "./Pages/Course/CreateCourse";
 import Profile from "./Pages/User/Profile";
+import EditProfile from "./Pages/User/EditProfile";
 function App() {
   return (
     <>
@@ -21,7 +22,7 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/signin" element={<SignIn />}></Route>
+        <Route path="/login" element={<SignIn />}></Route>
         <Route path="/courses" element={<CourseList />}></Route>
         <Route path="/contact" element={<ContactUs />}></Route>
         <Route path="/denied" element={<Denied />}></Route>
@@ -40,6 +41,7 @@ function App() {
         ></Route>
 
         <Route path="/user/profile" element={<Profile />}></Route>
+        <Route path="/user/editprofile" element={<EditProfile />}></Route>
 
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

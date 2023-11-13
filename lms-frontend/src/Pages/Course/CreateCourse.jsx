@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createNewCourse } from "../../Redux/slices/CourseSlice";
 import HomeLayout from "../../Layouts/HomeLayout";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function CreateCourse() {
   const dispatch = useDispatch();

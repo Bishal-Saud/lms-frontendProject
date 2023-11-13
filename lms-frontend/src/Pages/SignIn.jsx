@@ -8,34 +8,31 @@ import { login } from "../Redux/slices/authSlice";
 function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [signinData, setSignInData] = useState({
+  const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
 
   function handleUserInput(e) {
     const { name, value } = e.target;
-    setSignInData({
-      ...signinData,
+    setLoginData({
+      ...loginData,
       [name]: value,
     });
   }
 
-  async function islogin(event) {
+  async function onLogin(event) {
     event.preventDefault();
-    if (!signinData.email || !signinData.password) {
-      toast.error("Please Fill the all details");
+    if (!loginData.email || !loginData.password) {
+      toast.error("Please fill all the details");
       return;
     }
 
-    //dispatch create account action
-
-    const response = await dispatch(login(signinData));
-    console.log(response);
+    // dispatch create account action
+    const response = await dispatch(login(loginData));
     if (response?.payload?.success) navigate("/");
 
-    setSignInData({
+    setLoginData({
       email: "",
       password: "",
     });
@@ -46,7 +43,7 @@ function SignIn() {
       <div className="flex items-center justify-center h-screen">
         <form
           noValidate
-          onSubmit={islogin}
+          onSubmit={onLogin}
           className="flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]"
         >
           <h1 className="text-center text-2xl font-bold ">LogIn Page</h1>
@@ -54,27 +51,27 @@ function SignIn() {
           <div className="flex flex-col gap-1">
             <label htmlFor="email">Email</label>
             <input
-              required
               type="email"
+              required
               name="email"
               id="email"
               placeholder="Enter your email"
               className=" bg-transparent px-2 py-1 border "
               onChange={handleUserInput}
-              value={signinData.email}
+              value={loginData.email}
             />
           </div>
           <div className="flex flex-col gap-1">
             <label htmlFor="password">Password</label>
             <input
-              required
               type="password"
+              required
               name="password"
               id="password"
               placeholder="Enter your password"
               className=" bg-transparent px-2 py-1 border "
               onChange={handleUserInput}
-              value={signinData.password}
+              value={loginData.password}
             />
           </div>
           <button

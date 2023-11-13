@@ -3,16 +3,15 @@ import HomeLayout from "../Layouts/HomeLayout";
 import { BsPersonCircle } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { createAccount } from "../Redux/slices/authSlice";
 import { isEmail, isValidPassword } from "../Helpers/RegexMatcher";
 
 function Signup() {
-  const [previewImage, setPreviewImage] = useState("");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [previewImage, setPreviewImage] = useState("");
   const [signupData, setSignupData] = useState({
     fullName: "",
     email: "",
@@ -87,7 +86,7 @@ function Signup() {
     //dispatch create account action
 
     const response = await dispatch(createAccount(formData));
-    console.log(response);
+    // console.log(response);
     if (response?.payload?.success) navigate("/");
 
     setSignupData({
@@ -110,7 +109,7 @@ function Signup() {
         >
           <h1 className="text-center text-2xl font-bold ">Registration Page</h1>
 
-          <label htmlFor="image_upload" className="cursor-pointer">
+          <label htmlFor="image_uploads" className="cursor-pointer">
             {previewImage ? (
               <img
                 className="h-24 w-24 rounded-full m-auto"
@@ -123,7 +122,7 @@ function Signup() {
           <input
             onChange={getImage}
             type="file"
-            className=""
+            className="hidden"
             id="image_uploads"
             name="image_uploads"
             accept=".jpg, .jpeg ,.png, .svg"
@@ -131,8 +130,8 @@ function Signup() {
           <div className="flex flex-col gap-1">
             <label htmlFor="fullName">Name</label>
             <input
+              type="text"
               required
-              type="fullName"
               name="fullName"
               id="fullName"
               placeholder="Enter your Full Name"
@@ -144,8 +143,8 @@ function Signup() {
           <div className="flex flex-col gap-1">
             <label htmlFor="email">Email</label>
             <input
-              required
               type="email"
+              required
               name="email"
               id="email"
               placeholder="Enter your email"
@@ -157,8 +156,8 @@ function Signup() {
           <div className="flex flex-col gap-1">
             <label htmlFor="password">Password</label>
             <input
-              required
               type="password"
+              required
               name="password"
               id="password"
               placeholder="Enter your password"
@@ -175,7 +174,7 @@ function Signup() {
           </button>
           <p className="text-center">
             Already have an account ?{" "}
-            <Link to="/signin" className="link text-accent cursor-pointer">
+            <Link to="/login" className="link text-accent cursor-pointer">
               Login
             </Link>
           </p>

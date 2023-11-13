@@ -53,7 +53,7 @@ const courseSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllCourses.fulfilled, (state, action) => {
       if (action.payload) {
-        console.log("actionPayload", action.payload);
+        // console.log("actionPayload", action.payload);
         state.courseData = [...action.payload];
       }
     });
