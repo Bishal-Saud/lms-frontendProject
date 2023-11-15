@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import axiosInstance from "../../Helpers/axiosInstance";
 
@@ -22,7 +22,7 @@ export const getAllCourses = createAsyncThunk("/course/get", async () => {
 });
 
 export const createNewCourse = createAsyncThunk(
-  "/course/create",
+  "/courses/create",
   async (data) => {
     try {
       let formData = new FormData();

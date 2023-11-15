@@ -16,6 +16,7 @@ function EditProfile() {
     avatar: undefined,
     userId: useSelector((state) => state?.auth?.data?._id),
   });
+
   function handleImageUpload(e) {
     e.preventDefault();
     const imageUpload = e.target.files[0];

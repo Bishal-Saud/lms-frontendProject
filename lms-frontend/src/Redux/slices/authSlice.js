@@ -32,7 +32,7 @@ export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
 export const login = createAsyncThunk("/auth/login", async (data) => {
   try {
     const res = axiosInstance.post("user/login", data);
-
+    console.log(data);
     toast.promise(res, {
       loading: "Wait ! Login your account",
       success: (data) => {
@@ -68,7 +68,7 @@ export const updateProfile = createAsyncThunk(
   async (data) => {
     try {
       const res = axiosInstance.put(`user/update/${id[0]}`, data[1]);
-
+      console.log("useid", data);
       toast.promise(res, {
         loading: "Wait ! profile is updating ",
         success: (data) => {

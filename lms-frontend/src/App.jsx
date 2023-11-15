@@ -31,9 +31,8 @@ function App() {
           element={<CourseDescription />}
         ></Route>
 
-        <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
-          <Route path="/courses/create" element={<CreateCourse />}></Route>
-        </Route>
+        <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}></Route>
+        <Route path="/courses/create" element={<CreateCourse />}></Route>
 
         {/* Not working require auth so I'm trying to do it separately */}
         <Route
