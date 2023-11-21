@@ -15,9 +15,11 @@ function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const razorpayKey = useSelector((state) => state?.razorpay?.key);
+
   const subscription_id = useSelector(
     (state) => state?.razorpay?.subscription_id
   );
+
   const paymentDetails = {
     razorpay_payment_id: "",
     razorpay_subscription_id: "",
@@ -47,8 +49,8 @@ function Checkout() {
 
         toast.success("Payment successfull");
 
-        const res = await dispatch(verifyUserPayment(paymentDetails));
-        console.log(res);
+        let res = await dispatch(verifyUserPayment(paymentDetails));
+
         res?.payload?.success
           ? navigate("/checkout/success")
           : navigate("/checkout/fail");
@@ -59,7 +61,7 @@ function Checkout() {
   }
 
   async function load() {
-    await dispatch(getRazorPayId());
+    await dispatch(razorPayId());
     await dispatch(purchaseCourseBundle());
   }
 

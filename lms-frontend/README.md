@@ -1,4 +1,10 @@
 Many errors occurred while running with backend I want to solve this all
-1.Role and data of user and admin is undefined
-2.Updating the user profile
-3.creating the course by admin
+1.Role and data of user and admin is undefined -- solved
+2.Updating the user profile - remaining\*\*\*
+3.creating the course by admin -- solved
+4.Checkout page
+5.payment cancellation
+6.Lecture stat-desc
+7.Display Lectures
+8.Uploading Lectures
+9.Admin Dashboard

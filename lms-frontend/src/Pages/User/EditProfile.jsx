@@ -16,6 +16,7 @@ function EditProfile() {
     avatar: undefined,
     userId: useSelector((state) => state?.auth?.data?._id),
   });
+
   function handleImageUpload(e) {
     e.preventDefault();
     const imageUpload = e.target.files[0];
@@ -55,9 +56,11 @@ function EditProfile() {
     formData.append("avatar", data.avatar);
     // console.log(formData.entries().next());
     // console.log(formData.entries().next());
-    console.log([data, formData], "user id data");
+    console.log([data.userId, formData], "user id data");
+    console.log([data, formData], "user data");
 
     await dispatch(updateProfile([data.userId, formData]));
+
     await dispatch(getUserData());
     navigate("/user/profile");
   }

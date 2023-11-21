@@ -65,7 +65,6 @@ export const logout = createAsyncThunk("/auth/logout", async (data) => {
 export const updateProfile = createAsyncThunk(
   "/user/update/profile",
   async (data) => {
-    console.log("useid", data);
     try {
       const res = axiosInstance.put(`user/update/${data[0]}`, data[1]);
       toast.promise(res, {
