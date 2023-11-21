@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 function CourseCard({ data }) {
+  // console.log(data, "lecturesCard");
   const navigate = useNavigate();
   return (
     <div
@@ -25,7 +26,7 @@ function CourseCard({ data }) {
           </p>
           <p className="font-semibold">
             <span className="text-yellow-500 font-bold">Total lectures :</span>
-            {data?.numberoflectures}
+            {data?.numberOfLecture}
           </p>
           <p className="font-semibold">
             <span className="text-yellow-500 font-bold">Instructed :</span>
