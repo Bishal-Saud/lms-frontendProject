@@ -72,7 +72,7 @@ export const cancelCourseBundle = createAsyncThunk(
   "/payments/cancel",
   async () => {
     try {
-      const response = axiosInstance.get("/payment/unsubscribe");
+      const response = axiosInstance.post("/payment/unsubscribe");
       toast.promise(response, {
         loading: "unsubscribing the bundle",
         success: (data) => {
@@ -100,7 +100,7 @@ const razorPaySlice = createSlice({
         state.subscription_id = action?.payload?.subscription_id;
       })
       .addCase(verifyUserPayment.fulfilled, (state, action) => {
-        console.log("action", action);
+        console.log("action", action.payload);
         toast.success(action?.payload?.message);
         state.isPaymentVerified = action?.payload?.success;
       })
