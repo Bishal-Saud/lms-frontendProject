@@ -20,6 +20,7 @@ import CheckoutSuccess from "./Pages/Payment/CheckoutSucess";
 import Checkoutfail from "./Pages/Payment/CheckoutFail";
 import CheckoutFail from "./Pages/Payment/CheckoutFail";
 import Displaylectures from "./Pages/Dashboard/Displaylecture";
+import Addlecture from "./Pages/Dashboard/AddLecture";
 function App() {
   return (
     <>
@@ -38,6 +39,7 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
           <Route path="/courses/create" element={<CreateCourse />}></Route>
+          <Route path="/courses/addlecture" element={<Addlecture />}></Route>
         </Route>
 
         {/* Not working require auth so I'm trying to do it separately */}
