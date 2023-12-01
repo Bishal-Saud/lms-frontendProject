@@ -1,18 +1,10 @@
-import { useEffect } from "react";
 import { RxCrossCircled } from "react-icons/rx";
-import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
-import { getUserData } from "../../Redux/slices/authSlice";
 
 function CheckoutFail() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUserData);
-  });
-
   return (
     <HomeLayout>
       <div className="min-h-[90vh] flex items-center justify-center text-white">

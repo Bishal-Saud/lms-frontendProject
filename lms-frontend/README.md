@@ -4,7 +4,8 @@ Many errors occurred while running with backend I want to solve this all
 3.creating the course by admin -- solved
 4.Checkout page - Problem - unable to subscribe
 5.payment cancellation - error: unable to get user active status to unsubscribe
-6.Lecture stat-desc 
+6.Lecture stat-desc
 7.Display Lectures -
 8.Uploading Lectures
 9.Admin Dashboard
+Remaining errors to solve....

@@ -25,6 +25,7 @@ export const purchaseCourseBundle = createAsyncThunk(
   async () => {
     try {
       const response = await axiosInstance.post("/payments/subscribe");
+
       return response.data;
     } catch (error) {
       toast.error(error?.response?.data?.message);
@@ -76,6 +77,7 @@ export const cancelCourseBundle = createAsyncThunk(
       toast.promise(response, {
         loading: "unsubscribing the bundle",
         success: (data) => {
+          console.log("undata", data);
           return data?.data?.message;
         },
         error: "Failed to unsubscribe",
@@ -97,10 +99,11 @@ const razorPaySlice = createSlice({
         state.key = action?.payload?.key;
       })
       .addCase(purchaseCourseBundle.fulfilled, (state, action) => {
+        console.log("action1", action);
         state.subscription_id = action?.payload?.subscription_id;
       })
       .addCase(verifyUserPayment.fulfilled, (state, action) => {
-        // console.log("action", action);
+        console.log("action2", action);
         toast.success(action?.payload?.message);
         state.isPaymentVerified = action?.payload?.success;
       })
