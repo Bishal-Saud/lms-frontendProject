@@ -25,11 +25,11 @@ function Displaylectures() {
   }
 
   useEffect(() => {
-    console.log(state);
     if (!state) navigate("/courses");
-    //Id not found here is problem to solve
-    // ---> dispatch(getCourseLectures(state._id));
+
+    dispatch(getCourseLectures(state._id));
   }, []);
+
   return (
     <HomeLayout>
       <div className="flex flex-col gap-10 items-center justify-center min-h-[90vh] py-10 text-wihte mx-[5%]">
@@ -50,11 +50,11 @@ function Displaylectures() {
                 controlsList="nodownload"
               ></video>
               <div>
-                <h1>
+                <h1 className="text-white">
                   <span className="text-yellow-500"> Title: </span>
                   {lectures && lectures[currentVideo]?.title}
                 </h1>
-                <p>
+                <p className="text-white">
                   <span className="text-yellow-500 line-clamp-4">
                     Description:{" "}
                   </span>
@@ -81,7 +81,7 @@ function Displaylectures() {
               {lectures &&
                 lectures.map((lecture, idx) => {
                   return (
-                    <li className="space-y-2" key={lecture._id}>
+                    <li className="space-y-2 text-white" key={lecture._id}>
                       <p
                         className="cursor-pointer"
                         onClick={() => setCurrentVideo(idx)}

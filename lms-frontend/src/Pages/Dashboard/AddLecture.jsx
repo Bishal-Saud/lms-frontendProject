@@ -42,12 +42,13 @@ function Addlecture() {
       toast.error("All fields are mandatory");
       return;
     }
-    const response = await dispatch(addCourseLectures(userInput));
+    const res = await dispatch(addCourseLectures(userInput));
+    // console.log("res", res);
     if (res?.payload?.success) {
       navigate(-1);
       setUserInput({
         id: courseDetails?._id,
-        lecture: undefined,
+        lecture: null,
         title: "",
         description: "",
         videoSrc: "",
@@ -56,6 +57,7 @@ function Addlecture() {
   }
 
   useEffect(() => {
+    // console.log("courseDetails", courseDetails);
     if (!courseDetails) navigate("/courses");
   }, []);
 
@@ -71,7 +73,7 @@ function Addlecture() {
               Add new lecture
             </h1>
           </header>
-          <form onSubmit={onFormSubmit()} className="flex flex-col gap-3">
+          <form onSubmit={onFormSubmit} className="flex flex-col gap-3">
             <input
               type="text"
               name="title"
@@ -93,7 +95,7 @@ function Addlecture() {
                 muted
                 src={userInput.videoSrc}
                 controls
-                controlsList="nodownload nofullscreen"
+                controlsList="nofullscreen"
                 disablePictureInPicture
                 className="object-fill rounded-tl-lg rounded-tr-lg w-full"
               />

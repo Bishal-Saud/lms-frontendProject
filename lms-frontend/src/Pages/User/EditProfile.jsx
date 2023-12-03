@@ -10,9 +10,9 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 function EditProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [previewImage, setImagePreview] = useState("");
   const [data, setData] = useState({
-    previewImage: " ",
-    fullName: "",
+    fullName: " ",
     avatar: undefined,
     userId: useSelector((state) => state?.auth?.data?._id),
   });
@@ -20,15 +20,17 @@ function EditProfile() {
   function handleImageUpload(e) {
     e.preventDefault();
     const imageUpload = e.target.files[0];
+
     if (imageUpload) {
+      setData({
+        ...data,
+        avatar: imageUpload,
+      });
+
       const fileReader = new FileReader();
       fileReader.readAsDataURL(imageUpload);
       fileReader.addEventListener("load", function () {
-        setData({
-          ...data,
-          previewImage: this.result,
-          avatar: imageUpload,
-        });
+        setImagePreview(this.result);
       });
     }
   }
@@ -39,6 +41,7 @@ function EditProfile() {
       ...data,
       [name]: value,
     });
+    // console.log("data details inp", data);
   }
 
   async function onFormSubmit(e) {
@@ -51,13 +54,13 @@ function EditProfile() {
       toast.error("Name cannot be less then 5 char");
     }
 
+    // console.log("submitted data", data);
+
     const formData = new FormData();
     formData.append("fullName", data.fullName);
     formData.append("avatar", data.avatar);
     // console.log(formData.entries().next());
-    // console.log(formData.entries().next());
-    console.log([data.userId, formData], "user id data");
-    console.log([data, formData], "user data");
+    // console.log(formData);
 
     await dispatch(updateProfile([data.userId, formData]));
 
@@ -74,10 +77,11 @@ function EditProfile() {
         >
           <h1 className="text-center text-2xl font-semibold">Edit Profile</h1>
           <label htmlFor="image_uploads" className="cursor-pointer">
-            {data.previewImage ? (
+            {previewImage ? (
               <img
                 className="w-28 h-28 rounded-full m-auto"
-                src={data.previewImage}
+                src={previewImage}
+                alt="Preview Image"
               />
             ) : (
               <BsPersonCircle className="w-28 h-28 rounded-full m-auto" />
@@ -94,7 +98,7 @@ function EditProfile() {
 
           <div className="flex flex-col gap-1">
             <label htmlFor="fullName" className="text-lg font-semibold ">
-              Full Name{" "}
+              Full Name
             </label>
             <input
               type="text"
@@ -102,8 +106,8 @@ function EditProfile() {
               name="fullName"
               placeholder="Enter your name"
               className="bg-transparent px-2 py-1 border"
-              value={data.fullName}
               onChange={handleInputChange}
+              value={data.fullName}
             />
           </div>
           <button

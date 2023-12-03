@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { getUserData } from "../../Redux/slices/authSlice";
 import { cancelCourseBundle } from "../../Redux/slices/RazorPaySlice";
+import { useEffect } from "react";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -18,6 +19,11 @@ function Profile() {
     toast.success("Cancellation completed!");
     navigate("/");
   }
+
+  useEffect(() => {
+    dispatch(getUserData());
+  }, []);
+
   return (
     <HomeLayout>
       <div className="min-h-[90vh] flex items-center justify-center">
