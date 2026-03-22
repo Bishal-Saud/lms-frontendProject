@@ -17,7 +17,10 @@ function Signup() {
     email: "",
     password: "",
     avatar: "",
+    adminCode: "",
   });
+
+  const [showAdmin,setShowAdmin] = useState(false);
 
   function handleUserInput(e) {
     const { name, value } = e.target;
@@ -83,6 +86,10 @@ function Signup() {
     formData.append("email", signupData.email);
     formData.append("avatar", signupData.avatar);
 
+    if (signupData.adminCode) {
+  formData.append("adminCode", signupData.adminCode);
+}
+
     //dispatch create account action
 
     const response = await dispatch(createAccount(formData));
@@ -94,6 +101,7 @@ function Signup() {
       email: "",
       password: "",
       avatar: "",
+      adminCode: "",
     });
 
     setPreviewImage("");
@@ -166,6 +174,27 @@ function Signup() {
               value={signupData.password}
             />
           </div>
+          <p
+  onClick={() => setShowAdmin(!showAdmin)}
+  className="text-center text-sm text-yellow-400 cursor-pointer"
+>
+  Register as Admin?
+</p>
+{showAdmin && (
+  <div className="flex flex-col gap-1">
+    <label htmlFor="adminCode">Admin Secret Code</label>
+    <input
+      type="password"
+      name="adminCode"
+      id="adminCode"
+      placeholder="Enter admin secret"
+      className="bg-transparent px-2 py-1 border"
+      onChange={handleUserInput}
+      value={signupData.adminCode}
+    />
+  </div>
+)}
+
           <button
             type="submit"
             className=" bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 mt-2 font-semibold cursor-pointer"

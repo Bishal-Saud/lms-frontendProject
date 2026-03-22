@@ -27,15 +27,19 @@ function Profile() {
   return (
     <HomeLayout>
       <div className="min-h-[90vh] flex items-center justify-center">
-        <div className="my-10 flex flex-col gap-4 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]">
-          <img
-            src={userData?.avatar?.secure_url}
-            className="w-40 m-auto rounded-full border border-black"
-          />
-          <h3 className="text-xl font-semibold text-center capitalize">
+      
+
+        <div className="card card-side bg-base-100 shadow-sm">
+  <figure>
+    <img
+      src={userData?.avatar?.secure_url}
+      alt="UserImage" />
+  </figure>
+  <div className="card-body">
+     <h3 className="text-xl font-semibold text-center capitalize">
             {userData?.fullName}
           </h3>
-          <div className="grid grid-cols-2">
+             <div className="grid grid-cols-2">
             <p>Email: </p>
             <p>{userData?.email}</p>
             <p>Role: </p>
@@ -47,16 +51,17 @@ function Profile() {
                 : "Inactive"}
             </p>
           </div>
-          <div className="flex items-center justify-between gap-2">
+    <div className="card-actions ">
+          <div className="flex items-center justify-between gap-2 ">
             <Link
               to="/changepassword"
-              className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center"
+              className="btn-primary p-2"
             >
               <button>Change password</button>
             </Link>
             <Link
               to="/user/editprofile"
-              className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center"
+              className="btn-primary p-2"
             >
               <button>Edit profile</button>
             </Link>
@@ -69,7 +74,10 @@ function Profile() {
               Cancel Subscription
             </button>
           )}
-        </div>
+     
+    </div>
+  </div>
+</div>
       </div>
     </HomeLayout>
   );

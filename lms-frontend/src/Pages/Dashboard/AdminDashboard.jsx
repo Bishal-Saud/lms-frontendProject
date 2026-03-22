@@ -166,7 +166,7 @@ function AdminDashboard() {
             <button
               className="w-fit bg-yellow-500 hover:bg-yellow-600 transition-all ease-in-out duration-300 rounded text-white p-2 mx-4 font-bold"
               onClick={() => {
-                navigate("/course/create");
+                navigate("/courses/create");
               }}
             >
               Create New Course

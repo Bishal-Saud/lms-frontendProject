@@ -16,20 +16,20 @@ function CourseCard({ data }) {
         />
 
         <div className="p-3 space-y-1 text-white">
-          <h2 className="text-xl font-bold text-yellow-500 line-clamp-2">
+          <h2 className="text-xl font-bold text-[#007bff] line-clamp-2">
             {data?.title}
           </h2>
           <p className="line-clamp-2">{data?.description}</p>
           <p className="font-semibold">
-            <span className="text-yellow-500 font-bold">Category :</span>
+            <span className="text-[#007bff] font-bold">Category :</span>
             {data?.category}
           </p>
           <p className="font-semibold">
-            <span className="text-yellow-500 font-bold">Total lectures :</span>
+            <span className="text-[#007bff] font-bold">Total lectures :</span>
             {data?.numberOfLecture}
           </p>
           <p className="font-semibold">
-            <span className="text-yellow-500 font-bold">Instructed :</span>
+            <span className="text-[#007bff] font-bold">Instructed :</span>
             {data?.createdBy}
           </p>
         </div>

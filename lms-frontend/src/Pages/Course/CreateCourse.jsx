@@ -180,7 +180,7 @@ function CreateCourse() {
           </main>
           <button
             type="submit"
-            className="w-full py-2 rounded-sm font-semibold text-lg cursor-pointer bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300"
+            className="w-full py-2 rounded-sm font-semibold text-lg cursor-pointer bg-[#007bff] hover:bg-[#0056b3] transition-all ease-in-out duration-300"
           >
             Create Course
           </button>
