@@ -1,6 +1,5 @@
 // Component imports
 import App from "./App.jsx";
-import React from "react";
 //CSS Import
 import "./index.css";
 // Library imports
